@@ -1,0 +1,11 @@
+<nav class ="navbar navbar-expand navbar-dark bg-dark">
+  <ul class="navbar-nav">
+    <%if (button == 'authentication'){%>
+    <%- include("buttons/authentication.ejs", {active}) %>
+    <%}%>
+
+    <%if (button == 'general'){%>
+    <%- include("buttons/general.ejs") %>
+    <%}%>
+  </ul>
+</nav>

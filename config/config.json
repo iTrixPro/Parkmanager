@@ -1,0 +1,14 @@
+{
+  "db": {
+    "host": "localhost",
+    "user": "root",
+    "password": "",
+    "database": "parkingDB",
+    "port": "3306"
+  },
+  "routes": {
+    "/": "Login",
+    "/register": "Register",
+    "/home": "Home"
+  }
+}
