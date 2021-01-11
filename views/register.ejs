@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+
+    <meta charset="utf-8">
+    <title> Register Page </title>
+
+    <!-- import bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+
+    <%- include("layouts/header", {button: 'authentication', active: "register"}) %>
+
+    <form class="container" method="post">
+
+      <!-- username -->
+      <div class="form-group">
+        <label for="username_input"> Username </label>
+        <input type="text" class="form-control" id="username_input" name="username" required>
+      </div>
+
+      <!-- password -->
+      <div class="form-group">
+        <label for="password_input"> Password </label>
+        <input type="password" class="form-control" id="password_input" name="password" required>
+      </div>
+
+      <!-- submit -->
+      <div class="form-group">
+        <label></label>
+        <button type="submit" class="btn btn-primary form-control"> Register </button>
+      </div>
+
+    </form>
+
+  </body>
+
+</html>
