@@ -9,6 +9,10 @@
   "routes": {
     "/": "Login",
     "/register": "Register",
-    "/home": "Home"
+    "/home": "Home",
+    "/logout": "",
+    "/settings": "Setting",
+    "/delete": "Setting",
+    "/update": "Setting"
   }
 }

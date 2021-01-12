@@ -20,23 +20,36 @@ app.use(session({
 ** the adequate model but also the config of the db
 */
 const config = require('./config/config.json')
+const user = require('./controllers/logout')
 for (let key in config['routes']) {
-  let controller = factory.makeController(config['routes'][key], {'path':'../models/','config': config['db']})
+    if (key == '/logout') {
+      app.get(key, (req, res) => {
+        user.logout(req, res)
+      })
+    } else {
+      let controller = factory.makeController(config['routes'][key], {'path':'../models/','config': config['db']})
+      if(key == '/delete') {
+        // delete in the setting view
+        app.get(key, (req, res) => {
+          controller.delete(req, res)
+        })
+      } else {
+        app.get(key, (req, res) => {
+          controller.getView(req, res, controller.toString().toLowerCase())
+        })
 
-  app.get(key, (req, res) => {
-    controller.getView(req, res, controller.toString().toLowerCase())
-  })
-
-  app.post(key, (req, res) => {
-    controller.post(req, res)
-  })
-
+        app.post(key, (req, res) => {
+          controller.post(req, res)
+        })
+      }
+    }
 }
 
 // handle unknown routes
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.render('errors/404')
 })
+
 
 app.listen(PORT)
 module.exports = app

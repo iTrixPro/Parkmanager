@@ -19,7 +19,7 @@ class Login extends Controller {
             console.log('ERROR : Password is invalid.')
             res.redirect('/')
           } else {
-            req.session.loggedin = true
+            req.session.loggedIn = true
             req.session.username = username
             res.redirect('/home')
           }

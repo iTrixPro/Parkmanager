@@ -1,11 +1,13 @@
 const Login = require('./Login')
 const Register = require('./Register')
 const Home = require('./Home')
+const Setting = require('./Setting')
 
 const classes = {
   Login,
   Register,
-  Home
+  Home,
+  Setting
 }
 
 exports.makeController = (name, options) => {
