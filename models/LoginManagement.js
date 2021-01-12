@@ -7,6 +7,10 @@ class LoginManagement extends Model {
     super(config)
   }
 
+  /**
+   * Check if the username is valid / in the database
+   * @param username
+   */
   usernameIsValid(username) {
     let stmt = 'SELECT * FROM User WHERE username = ?'
     return new Promise((resolve, reject) => {
@@ -17,6 +21,12 @@ class LoginManagement extends Model {
     })
   }
 
+  /**
+   * Check if the password is valid
+   * according to the username
+   * @param username
+   * @param password
+   */
   passwordIsValid(username, password) {
     return new Promise((resolve, reject) => {
       let stmt = 'SELECT password FROM User WHERE username = ?'

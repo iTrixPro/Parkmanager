@@ -7,6 +7,10 @@ class RegisterManagement extends Model {
     super(connection)
   }
 
+  /**
+   * Create a new user.
+   * @param infos
+   */
   newUser(infos) {
     console.log(infos)
     let stmt = 'INSERT INTO User(username, password) VALUES(?, ?)'
@@ -21,6 +25,10 @@ class RegisterManagement extends Model {
     })
   }
 
+  /**
+   * Check if the username is already used.
+   * @param username
+   */
   usernameIsUse(username) {
     return new Promise((resolve, reject) => {
       let stmt = "SELECT * FROM User where username = ?"
