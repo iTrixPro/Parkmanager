@@ -1,7 +1,7 @@
 <li class="nav-item">
-  <a class="nav-link active" href="/home"> Home </a>
+  <a class="nav-link <%if (active == 'home'){%> active<%}%>" href="/home"> Home </a>
 </li>
 <li class="nav-item">
-  <a class= "nav-link" href="/settings"> Settings </a>
+  <a class= "nav-link <%if (active == 'settings'){%> active<%}%>" href="/settings"> Settings </a>
 </li>
 <a class="btn btn-danger" href="/logout"> Logout </a>

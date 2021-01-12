@@ -33,6 +33,16 @@ for (let key in config['routes']) {
         app.get(key, (req, res) => {
           controller.delete(req, res)
         })
+      } else if (key == '/assign') {
+        // assign in the home view
+        app.get(key, (req, res) => {
+          controller.assign(req, res)
+        })
+      } else if (key == '/unassign') {
+        //unassign in the home view
+        app.get(key, (req, res) => {
+          controller.unassign(req, res)
+        })
       } else {
         app.get(key, (req, res) => {
           controller.getView(req, res, controller.toString().toLowerCase())

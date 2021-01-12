@@ -7,15 +7,152 @@
     <title> Login Page </title>
 
     <!-- import bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel = "stylesheet" integrity = "sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin = "anonymous">
 
   </head>
 
   <body>
 
-    <%- include("../views/layouts/header.ejs", {button: 'general'} ) %>
-    Welcome home <%- username %> !
+    <%- include("../views/layouts/header.ejs", {button: 'general', active: 'home'} ) %>
+    <div class= "container">
+      <% if (status == 'admin') { %>
+        <!-- add new parking spot -->
+        <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"> Add a new parking spot : </h5>
+              <form class="container" method="post">
 
+                <!-- floor -->
+                <div class = "form-group">
+                  <label for = "floor_input"> Floor </label>
+                  <input type = "text" class = "form-control" id = "floor_input" name = "floor" required>
+                </div>
+
+                <!-- place number -->
+                <div class = "form-group">
+                  <label for = "place_input"> Place number </label>
+                  <input type = "text" class = "form-control" id = "place_input" name = "place_number" required>
+                </div>
+
+                <!-- submit -->
+                <div class="form-group">
+                  <label></label>
+                  <button type = "submit" class = "btn btn-primary form-control"> Create </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <!-- assign/unassign parking spot -->
+        <div class="row">
+          <div class="card col-6">
+            <!-- unassign -->
+            <div class="card-body">
+              <h5 class="card-title"> Unassign parking spot </h5>
+              <form class="container">
+
+                <!-- username -->
+                <div class = "form-group">
+                  <label> Username </label>
+                  <select name="username_unassign"></select>
+                </div>
+
+                <!-- submit -->
+                <div class = "form-group">
+                  <label></label>
+                  <a type = "submit" class= "btn btn-primary form-control" href="/unassign"> Unassign </a>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="card col-6">
+            <!-- assign -->
+            <div class="card-body">
+              <h5 class="card-title"> Assign parking spot</h5>
+              <form class="container">
+
+                <!-- username -->
+                <div class = "form-group">
+                  <label> Username </label>
+
+                  <select name = "username_assign">
+                    <%if(typeof assign !== "undefined"){%>
+                      <%for (let idx = 0; idx < assign.length; ++idx){%>
+                        <option> <%- assign[idx].username %> </option>
+                      <%}%>
+                    <%}%>
+                  </select>
+                </div>
+
+                <!-- floor -->
+                <div class = "form-group">
+                  <label> Floor </label>
+                  <select name = "floor_assign">
+                    <%if(typeof data !== "undefined"){%>
+                      <%for (let idx = 0; idx < data.length; ++idx){%>
+                        <option> <%- data[idx].floor %> </option>
+                      <%}%>
+                    <%}%>
+                  </select>
+                </div>
+
+                <!-- place number -->
+                <div class = "form-group">
+                  <label for="place_input"> Place number </label>
+                  <input type="number" class="form-control" id="place_input" name="place_numbe_assign" required>
+                </div>
+
+                <!-- submit -->
+                <div class = "form-group">
+                  <label></label>
+                  <a type = "submit" class= "btn btn-primary form-control" href="/assign"> Assign </a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      <%} else {%>
+        <!-- search an available spot or look for your spot -->
+        <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"> Search spot available : </h5>
+              <form class="container">
+
+                <!-- floor -->
+                <div class = "form-group">
+                  <label for = "floor_input"> Floor </label>
+                  <input type = "text" class = "form-control" id = "floor_input" name = "floor_public" required>
+                </div>
+                <!-- search -->
+                <div class="form-group">
+                  <label></label>
+                  <button type = "submit" class = "btn btn-primary form-control"> Search </button>
+                </div>
+                <br/>
+
+                <!-- place number -->
+                <div class = "form-group">
+                  <label for = "place_input"> Place number available </label>
+                  <select></select>
+                </div>
+
+                <!-- choose -->
+                <div class="form-group">
+                  <label></label>
+                  <button type = "submit" class = "btn btn-primary form-control"> Choose </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      <%}%>
+    </div>
   </body>
 
 </html>

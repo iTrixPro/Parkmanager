@@ -10,6 +10,8 @@
     "/": "Login",
     "/register": "Register",
     "/home": "Home",
+    "/assign": "Home",
+    "/unassign": "Home",
     "/logout": "",
     "/settings": "Setting",
     "/delete": "Setting",
