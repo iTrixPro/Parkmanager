@@ -5,6 +5,12 @@ class Setting extends Controller {
     super(options)
   }
 
+  /**
+   * Get the setting view and transfer the data needed.
+   * @param  req
+   * @param  res
+   * @param  path
+   */
   getView(req, res, path) {
     if (req.session.loggedIn) {
       this.model.getStatus(req.session.username).then((status) => {
@@ -15,12 +21,23 @@ class Setting extends Controller {
     }
   }
 
+  /**
+   * Delete an account, action accessible only on the side
+   * of the user (public role).
+   * @param  req
+   * @param  res
+   */
   delete(req, res) {
     this.model.removeUser(req.session.username).then((removed) => {
       if (removed) res.redirect('/')
     }).catch((err) => setImmediate(() => {throw err}))
   }
 
+  /**
+   * Allow to update your username, only for the public role.
+   * @param req
+   * @param res
+   */
   post(req, res) {
     let new_username = req.body.username
     this.model.updateUsername(req.session.username, new_username).then((username) => {

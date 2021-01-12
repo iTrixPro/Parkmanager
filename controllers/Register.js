@@ -10,6 +10,11 @@ class Register extends Controller{
     super(options)
   }
 
+  /**
+   * Take care of the registration of an user
+   * @param  req
+   * @param  res
+   */
   post(req, res) {
     let user_infos = {'username': req.body.username, 'password': req.body.password}
     this.model.usernameIsUse(user_infos['username']).then((valid) => {
@@ -29,6 +34,12 @@ class Register extends Controller{
     }).catch((err) => setImmediate(() => {throw err}))
   }
 
+  /**
+   * Check if the password is valid (
+   * min. length : 8, min. 1 lowercase,
+   * min. 1 uppercase, min 1 special character)
+   * @param password
+   */
   passwordIsValid(password) {
 
     let valid = true

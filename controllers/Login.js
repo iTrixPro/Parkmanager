@@ -5,7 +5,11 @@ class Login extends Controller {
     super(options)
   }
 
-
+  /**
+   * Take of an user login by checking the data
+   * @param req
+   * @param res
+   */
   post(req, res) {
     let username = req.body.username
     let password = req.body.password
