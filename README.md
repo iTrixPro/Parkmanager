@@ -30,6 +30,6 @@ API which manage parking for clients (B2B)
 * command : node public/index.js
 
 # Register
-* To register yourself, you need to have a username which is not already used and a password which respect the conditions which are :
+* To register yourself, you need to have an username which is not already used and a password which respect the conditions which are :
   * min. length : 8
   * contains : 1 lowwer case, 1 upper case, 1 special character
