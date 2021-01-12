@@ -1,5 +1,5 @@
 # Parkmanager
-API which manage parking for clients (B2B)
+API which manage parking spots for clients (B2B)
 
 # About 
 
