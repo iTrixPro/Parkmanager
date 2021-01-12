@@ -11,10 +11,21 @@ class Controller {
 
   }
 
+  /**
+   * Get the View according to the controller for a X route
+   * @param req - unused
+   * @param res - use to display the view
+   * @param path - path where is located the view
+   */
   getView(req, res, path) {
     res.render(path, {'username' : req.session.username})
   }
 
+  /**
+   * Abstract method, which will allow to treat forms data
+   * @param req
+   * @param res
+   */
   post(req, res) {
     throw new Error('Do not call abstract method post')
   }
